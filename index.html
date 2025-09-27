@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ data.name }} - Portfolio</title>
+    <link rel="stylesheet" href="style.css?v=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/sf-pro-display">
+
+</head>
+<body class="light-mode">
+    <nav class="navbar glass-effect">
+        <div class="container">
+            <span class="navbar-brand">Abhijeet Singh Portfolio</span>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#video-resume">Video Resume</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle light/dark mode">
+                <span class="toggle-icon">☽</span>
+            </button>
+            <button class="hamburger" id="hamburger" aria-label="Open navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="mobile-nav-links">
+            <button class="close-btn" id="close-btn" aria-label="Close navigation menu">
+                <i class="fas fa-times"></i>
+            </button>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#video-resume">Video Resume</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <button id="back-to-top-btn" class="back-to-top-btn" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container hero-content">
+                <div class="profile-avatar glass-effect">
+                    <img src="profile.jpg" alt="Abhijeet Singh profile photo" class="profile-img" />
+                </div>
+                <h1 class="main-title">Abhijeet Singh</h1>
+                <div class="subtitle">MCA (AI/ML) Student &amp; Full-Stack Python Developer</div>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn primary-btn glass-effect">Get In Touch</a>
+                    <a href="{{ url_for('download_cv') }}" class="btn primary-btn glass-effect">Download CV</a>
+                </div>
+                <div class="hero-socials">
+                    {% for social in data.social_media %}
+                        <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer" class="social-icon glass-effect" aria-label="{{ social.name }}">
+                            <i class="{{ social.icon }}"></i>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section section-padding">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-cards">
+                    <div class="about-card glass-effect">
+                        <h3>Who I Am</h3>
+                        <p>{{ data.about_me.description }}</p>
+                    </div>
+                    <div class="about-card glass-effect">
+                        <h3>Education</h3>
+                        {% for edu in data.education %}
+                            <p><strong>{{ edu.degree }}</strong></p>
+                            <p>{{ edu.institute }} ({{ edu.duration }})</p>
+                            <p>{{ edu.percentage }}</p>
+                            {% if not loop.last %}<br>{% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="video-resume" class="video-resume-section section-padding">
+            <div class="container">
+                <h2 class="section-title">Resume</h2>
+                <div class="video-container glass-effect">
+                    <iframe
+                        src="https://www.youtube.com/embed/sN9HgBJ7BRk?si=huumb0bWLDSkf2O5"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        title="Abhijeet Singh's Video Resume"
+                    ></iframe>
+                </div>
+                <div class="video-caption">Click play to watch my 2-minute video resume</div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills-section section-padding">
+            <div class="container">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-grid">
+                    {% for category, skill_list in data.skills.items() %}
+                        <div class="skill-category">
+                            <h3>{{ category }}</h3>
+                            <div class="category-cards">
+                                {% for skill in skill_list %}
+                                    <div class="skill-card glass-effect">
+                                        <span>{{ skill.name }}</span>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="experience-section section-padding">
+            <div class="container">
+                <h2 class="section-title">Experience</h2>
+                {% for job in data.experience %}
+                <div class="experience-card glass-effect">
+                    <div class="experience-card-header">
+                        <span class="experience-role">{{ job.role }}</span>
+                        <span class="experience-company">{{ job.company }}</span>
+                    </div>
+                    <div class="experience-meta">{{ job.duration }} | {{ job.location }}</div>
+                    <ul class="experience-responsibilities">
+                        {% for responsibility in job.responsibilities %}
+                            <li>{{ responsibility }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section section-padding">
+            <div class="container">
+                <h2 class="section-title">Project</h2>
+                {% for project in data.projects %}
+                <div class="project-card glass-effect">
+                    <div class="project-header">
+                        <span class="project-title">{{ project.title }}</span>
+                        <span class="project-tech">{{ project.technologies }}</span>
+                    </div>
+                    <div class="project-desc">{{ project.description }}</div>
+                    <div class="project-links">
+                        <a href="https://aabhijeetsingh.github.io/cryptofix-trading/" target="_blank" rel="noopener noreferrer" class="btn project-btn glass-effect">Live Demo</a>
+                        <a href="https://github.com/aabhijeetsingh/cryptofix-trading" target="_blank" rel="noopener noreferrer" class="btn secondary-btn glass-effect">Source Code</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section id="certifications" class="certifications-section section-padding">
+            <div class="container">
+                <h2 class="section-title">Certifications</h2>
+                <div class="certifications-container">
+                    {% for cert in data.certifications %}
+                        <div class="certification-card glass-effect">
+                            <h3>{{ cert.title }}</h3>
+                            <p><strong>Platform:</strong> {{ cert.platform }}</p>
+                            <p><strong>Date:</strong> {{ cert.date }}</p>
+                            {% if cert.cert_id %}<p><strong>Cert ID:</strong> {{ cert.cert_id }}</p>{% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section section-padding">
+            <div class="container">
+                <h2 class="section-title">Contact</h2>
+                <div class="contact-cards">
+                    <div class="contact-info glass-effect">
+                        <h3>Let's Connect</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> {{ data.location }}</p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:{{ data.contact_email }}">{{ data.contact_email }}</a></p>
+                        <p><i class="fas fa-phone"></i> {{ data.contact_phone }}</p>
+                        <div class="contact-social-links">
+                            {% for social in data.social_media %}
+                                <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer" class="social-icon glass-effect" aria-label="{{ social.name }}">
+                                    <i class="{{ social.icon }}"></i>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <form action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST" class="contact-form glass-effect" id="contactForm">
+                        <h3>Send me a message</h3>
+                        <!-- IMPORTANT: Replace a new form endpoint on formspree.io -->
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            <div class="error-message" id="name-error"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                            <div class="error-message" id="email-error"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder="Your Phone Number">
+                            <div class="error-message" id="phone-error"></div>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                            <div class="error-message" id="message-error"></div>
+                        </div>
+                        <button type="submit" class="btn primary-btn glass-effect">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer glass-effect">
+        <div class="container">
+            <div class="footer-social-links">
+                {% for social in data.social_media %}
+                    <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer" class="social-icon glass-effect" aria-label="{{ social.name }}">
+                        <i class="{{ social.icon }}"></i>
+                    </a>
+                {% endfor %}
+            </div>
+            <p class="footer-copy">&copy; {{ current_year }} Abhijeet Singh. Built with passion for AI/ML and web development.</p>
+        </div>
+    </footer>
+
+    <script src="script.js?v=1.0"></script>
+</body>
+</html>

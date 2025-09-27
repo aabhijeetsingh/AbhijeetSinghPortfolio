@@ -1,0 +1,4 @@
+# requirements.txt
+Flask
+Flask-Mail
+python-dotenv
