@@ -1,0 +1,239 @@
+<!-- This is the main HTML file for the portfolio website. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for character set, viewport, and title -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhijeet Singh - Portfolio</title>
+
+    <!-- External stylesheets for styling -->
+    <link rel="stylesheet" href="style.css?v=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/sf-pro-display">
+
+    <!-- Favicon for the website -->
+    <link rel="icon" href="profile.jpg" type="image/jpeg">
+
+</head>
+<body class="light-mode">
+    <!-- Navigation bar -->
+    <nav class="navbar glass-effect">
+        <div class="container">
+            <span class="navbar-brand">Abhijeet Singh Portfolio</span>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#video-resume">Video Resume</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#research-papers">Research Papers</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <!-- Theme toggle button -->
+            <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle light/dark mode">
+                <span class="toggle-icon">☽</span>
+            </button>
+            <!-- Hamburger menu for mobile -->
+            <button class="hamburger" id="hamburger" aria-label="Open navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile navigation links -->
+        <div class="mobile-nav-links">
+            <button class="close-btn" id="close-btn" aria-label="Close navigation menu">
+                <i class="fas fa-times"></i>
+            </button>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#video-resume">Video Resume</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#research-papers">Research Papers</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Back to top button -->
+    <button id="back-to-top-btn" class="back-to-top-btn" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Main content of the page -->
+    <main>
+        <!-- Hero section with profile picture, name, title, and social media links -->
+        <section id="hero" class="hero-section">
+            <div class="container hero-content">
+                <div class="profile-avatar glass-effect">
+                    <img src="profile.jpg" alt="Abhijeet Singh profile photo" class="profile-img" />
+                </div>
+                <h1 class="main-title" id="hero-name"></h1>
+                <div class="subtitle" id="hero-title-roles"></div>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn primary-btn glass-effect">Get In Touch</a>
+                    <a href="Abhijeet_Singh_CV.pdf" class="btn primary-btn glass-effect" download>Download CV</a>
+                </div>
+                <div class="hero-socials" id="hero-socials">
+                </div>
+            </div>
+        </section>
+
+        <!-- About me section with a short bio and education -->
+        <section id="about" class="about-section section-padding">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-cards">
+                    <div class="about-card glass-effect">
+                        <h3>Who I Am</h3>
+                        <p id="about-me-description"></p>
+                    </div>
+                    <div class="about-card glass-effect">
+                        <h3>Education</h3>
+                        <div id="education-list"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video resume section -->
+        <section id="video-resume" class="video-resume-section section-padding">
+            <div class="container">
+                <h2 class="section-title">Resume</h2>
+                <div class="video-container glass-effect">
+                    <iframe
+                        id="video-resume-iframe"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        title="Abhijeet Singh's Video Resume"
+                    ></iframe>
+                </div>
+                <div class="video-caption">Click play to watch my 2-minute video resume</div>
+            </div>
+        </section>
+
+        <!-- Skills section -->
+        <section id="skills" class="skills-section section-padding">
+            <div class="container">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-grid" id="skills-grid">
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience section -->
+        <section id="experience" class="experience-section section-padding">
+            <div class="container">
+                <h2 class="section-title">Experience</h2>
+                <div id="experience-list"></div>
+            </div>
+        </section>
+
+        <!-- Projects section -->
+        <section id="projects" class="projects-section section-padding">
+            <div class="container">
+                <h2 class="section-title">Project</h2>
+                <div id="projects-list"></div>
+            </div>
+        </section>
+
+        <!-- Research papers section -->
+        <section id="research-papers" class="research-papers-section section-padding">
+            <div class="container">
+                <h2 class="section-title">Research Papers</h2>
+                <div id="research-papers-list"></div>
+            </div>
+        </section>
+
+        <!-- Certifications section -->
+        <section id="certifications" class="certifications-section section-padding">
+            <div class="container">
+                <h2 class="section-title">Certifications</h2>
+                <div class="certifications-container" id="certifications-list">
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact section with a form -->
+        <section id="contact" class="contact-section section-padding">
+            <div class="container">
+                <h2 class="section-title">Contact</h2>
+                <div class="contact-cards">
+                    <div class="contact-info glass-effect">
+                        <h3>Let's Connect</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> <span id="contact-location"></span></p>
+                        <p><i class="fas fa-envelope"></i> <a id="contact-email-link" href=""><span id="contact-email"></span></a></p>
+                        <p><i class="fas fa-phone"></i> <span id="contact-phone"></span></p>
+                        <div class="contact-social-links" id="contact-socials">
+                        </div>
+                    </div>
+                    <form action="https://formspree.io/f/movkdnlz" method="POST" class="contact-form glass-effect" id="contactForm">
+                        <h3>Send me a message</h3>
+                        <!-- IMPORTANT: Replace a new form endpoint on formspree.io -->
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            <div class="error-message" id="name-error"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                            <div class="error-message" id="email-error"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder="Your Phone Number">
+                            <div class="error-message" id="phone-error"></div>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                            <div class="error-message" id="message-error"></div>
+                        </div>
+                        <button type="submit" class="btn primary-btn glass-effect">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer section -->
+    <footer class="footer glass-effect">
+        <div class="container">
+            <div class="footer-social-links" id="footer-socials">
+            </div>
+            <p class="footer-copy">&copy; <span id="footer-year"></span> Abhijeet Singh. Built with passion for AI/ML and web development.</p>
+        </div>
+    </footer>
+
+    <!-- Chatbot container -->
+    <div id="chat-container" class="chat-container">
+        <div class="chat-header">
+            <h3>Chat with me</h3>
+            <div>
+                <button id="fullscreen-chat-btn" class="chat-header-btn"><i class="fas fa-expand"></i></button>
+                <button id="close-chat-btn" class="chat-header-btn">&times;</button>
+            </div>
+        </div>
+        <div id="chat-messages" class="chat-messages">
+            <div id="suggested-questions"></div>
+        </div>
+        <div class="chat-input-container">
+            <input type="text" id="chat-input" placeholder="Ask me a question...">
+            <button id="chat-send-btn">Send</button>
+        </div>
+    </div>
+    <!-- Chatbot toggle button -->
+    <button id="chat-toggle-btn" class="chat-toggle-btn">
+        <i class="fas fa-robot"></i>
+    </button>
+
+    <!-- JavaScript files -->
+    <script src="data.js"></script>
+    <script src="script.js?v=1.0"></script>
+</body>
+</html>
