@@ -47,13 +47,13 @@ const portfolio_data = {
         {
             "degree": "Master of Computer Applications (AI/ML)",
             "institute": "Amity University Online",
-            "duration": "2024 - 2025",
-            "percentage": ""
+            "duration": "2024 - 2026",
+            "percentage": "CGPA: 7.9"
         },
         {
             "degree": "Bachelor of Computer Applications (Honours)",
             "institute": "AKS University, Satna",
-            "duration": "",
+            "duration": "2021 - 2024",
             "percentage": "CGPA: 5.7"
         },
         {
